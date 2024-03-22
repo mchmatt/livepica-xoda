@@ -1,3 +1,4 @@
+import Artifact from "./Artifact";
 import LivePixPubSubWidget from "./LivePixPubSubWidget";
 import MessageQueueProcessor from "./MessageQueueProcessor";
 
@@ -9,10 +10,11 @@ async function getPubSubAuth(id: string) {
   return res.json();
 }
  
-export default async function Page({ params, searchParams }: any) {
+export default async function Page({ params }: any) {
   const data = await getPubSubAuth(params.id);
   return <div>
     <MessageQueueProcessor/>
     <LivePixPubSubWidget token={data.token}/>
+    { Array(16).fill(0).map((_, idx) => <Artifact key={idx}/>)}
   </div>
 }
