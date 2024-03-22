@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { QueuedMessage } from "@/stores/alertQueueStore";
 import { useCurrentAlertStore } from "@/stores/currentAlertStore";
 
@@ -12,9 +12,13 @@ export interface GenericAlertProps {
 };
 
 export default function GenericAlert({ data, alert } : GenericAlertProps) {
+  const [isImageLoaded, setImageLoaded] = useState(false);
   const setCurrentAlert = useCurrentAlertStore((state) => state.setCurrentAlert);
 
   useEffect(() => {
+    if (!isImageLoaded)
+      return;
+    
     // Iniciamos o áudio do alerta primeiro
     var alertAudio = new Audio(alert.audio);
     alertAudio.play();
@@ -33,15 +37,16 @@ export default function GenericAlert({ data, alert } : GenericAlertProps) {
       else
         setTimeout(() => setCurrentAlert(null), 5000);
     };
-  }, []);
+  }, [isImageLoaded]);
 
   return (
-    <div className="absolute flex flex-col items-center w-screen h-screen">
+    <div className="absolute flex flex-col items-center w-screen h-screen" style={{opacity: isImageLoaded ? 1 : 0}}>
       <Image 
         src={alert.image}
         width={0}
         height={0}
         alt=""
+        onLoad={() => setImageLoaded(true)}
         style={{ flex: 1, width: "auto", height: "0vh", maxHeight: "70vh", objectFit: "contain" }}
       />
       <div className="text-5xl shadow-md mt-8">
