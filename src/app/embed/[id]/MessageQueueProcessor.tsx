@@ -6,6 +6,7 @@ import { useAlertQueueStore } from "@/stores/alertQueueStore";
 import { useCurrentAlertStore } from "@/stores/currentAlertStore";
 import GenericAlert from "./GenericAlert";
 
+//5, 6, 10, 15
 /* Configuração */
 const alerts = [
   { // Nivelzin brigado aí meu homem
@@ -28,11 +29,11 @@ const alerts = [
     image: "/images/alert5.gif",
     condition: (valor: number) => valor === 24
   },
-  // { // Carlão NAAAAO, SAAAAI
-  //   audio: "/sounds/alert7.mp3",
-  //   image: "/images/alert7.gif",
-  //   condition: (valor: number) => valor === 30
-  // },
+  { // Carlão NAAAAO, SAAAAI
+    audio: "/sounds/alert7.mp3",
+    image: "/images/alert7.gif",
+    condition: (valor: number) => valor === 30
+  },
   { // Nivelzinho espirrando super estourado e assustador
     audio: "/sounds/alert8.mp3",
     image: "/images/alert8.gif",
