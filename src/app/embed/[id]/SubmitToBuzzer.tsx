@@ -8,7 +8,7 @@ export async function submitToBuzzer(alertID: string, receipt: string) {
     fetch(`https://buzzer.livepix.gg/alerts/${alertID}`, {
       method: "POST",
       headers: {
-        "x-receipt": receipt
+        "X-Receipt": receipt
       }
     })
     .then(response => {
@@ -20,6 +20,5 @@ export async function submitToBuzzer(alertID: string, receipt: string) {
     })
   }
 
-  setTimeout(() => submit(0), 5000);
-  setTimeout(() => submit(0), 30000);
+  submit(0);
 }
