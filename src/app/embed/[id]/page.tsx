@@ -3,7 +3,7 @@ import LivePixPubSubWidget from "./LivePixPubSubWidget";
 import MessageQueueProcessor from "./MessageQueueProcessor";
 
 async function getPubSubAuth(id: string) {
-  const res = await fetch(`https://webservice.livepix.gg/pubsub/widget/${id}`)
+  const res = await fetch(`https://webservice.livepix.gg/pubsub/widget/${id}`, { cache: 'no-store' })
   if (!res.ok)
     throw new Error('Failed to fetch data');
  
