@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { QueuedMessage } from "@/stores/alertQueueStore";
 import { useCurrentAlertStore } from "@/stores/currentAlertStore";
+import { submitToBuzzer } from './SubmitToBuzzer';
 
 export interface GenericAlertProps {
   data: QueuedMessage,
@@ -32,6 +33,9 @@ export default function GenericAlert({ data, alert } : GenericAlertProps) {
         textToSpeechAudio.onended = () => {
           // Ambos áudio do alerta e da IA acabaram, reseta a tela p/ esperar por novos alertas
           setTimeout(() => setCurrentAlert(null), 1000);
+
+          if (data.alertID && data.receiptToken)
+            submitToBuzzer(data.alertID, data.receiptToken); // Let the buzzer microservice know we received the message
         }
       }
       else

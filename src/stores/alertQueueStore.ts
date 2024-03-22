@@ -6,6 +6,8 @@ export type QueuedMessage = {
   author: string,
   message: string,
   valueFormatted: string,
+  alertID: string | null,
+  receiptToken: string | null,
   textToSpeechAudioURL: string | null
 };
 

@@ -52,11 +52,12 @@ export default function LivePixPubSubWidget({ token } : LivePixPubSubWidgetParam
         
         else if (parsed.message.event === "notification:show") {
           sendMessage(getConfirmationMessage(parsed.id)); // Confirm the receival of the event
-          submitToBuzzer(parsed.message.payload.alertId, parsed.message.payload.receipt); // Let the buzzer microservice know we received the message
 
           console.log("Recebemos um alerta vindo do Livepix:", parsed);
           push({
             id: parsed.id,
+            alertID: parsed.message.payload.alertId,
+            receiptToken: parsed.message.payload.receipt,
             author: parsed.message.payload.data.data.author,
             message: parsed.message.payload.data.data.message,
             value: parsed.message.payload.data.data.amount.value,

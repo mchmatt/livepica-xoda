@@ -13,6 +13,8 @@ export default function Page() {
     <input className="text-black" onChange={(e) => setValue(parseFloat(e.target.value))}/>
     <button className="ml-5 bg-white text-black" onClick={() => push({
       id: null,
+      alertID: null,
+      receiptToken: null,
       author: "mchmatt",
       message: "Xoda sua puta manca do caralho, te odeio S2! Você alegra as nossas vidas com suas lives diárias e emocionantes",
       textToSpeechAudioURL: null,
