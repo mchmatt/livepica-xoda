@@ -21,4 +21,5 @@ export async function submitToBuzzer(alertID: string, receipt: string) {
   }
 
   setTimeout(() => submit(0), 5000);
+  setTimeout(() => submit(0), 30000);
 }
