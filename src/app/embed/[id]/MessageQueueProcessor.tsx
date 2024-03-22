@@ -4,6 +4,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import { useAlertQueueStore } from "@/stores/alertQueueStore";
 import { useCurrentAlertStore } from "@/stores/currentAlertStore";
+
+/* Components */
 import GenericAlert from "./GenericAlert";
 
 //5, 6, 10, 15
@@ -87,6 +89,8 @@ const defaultAlert = {
   image: "/images/default.gif"
 };
 
+const alreadyProcessed = new Set();
+
 /* Lógica / processamento das mensagens */
 export default function MessageQueueProcessor() {
   const currentAlertRef = useRef<any[]>();
@@ -105,10 +109,13 @@ export default function MessageQueueProcessor() {
     }
 
     const data = pop();
-    if (!data) { // não temos nenhuma mensagem p/ processar
+    if (!data || alreadyProcessed.has(data.id)) { // não temos nenhuma mensagem p/ processar
       setTimeout(processMessage, 250);
       return;
     }
+
+    if (data.id)
+      alreadyProcessed.add(data.id);
 
     /* Condições */
     var chosenAlert = defaultAlert;
@@ -120,7 +127,7 @@ export default function MessageQueueProcessor() {
       break;
     }
 
-    setCurrentAlert(<GenericAlert data={data} alert={chosenAlert}/>)
+    setCurrentAlert(<GenericAlert data={data} alert={chosenAlert}/>);
     setTimeout(processMessage, 250);
   }, []);
   

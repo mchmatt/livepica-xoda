@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 export type QueuedMessage = {
+  id: string | null,
   value: number,
   author: string,
   message: string,
