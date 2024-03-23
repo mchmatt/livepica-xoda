@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /* Hooks */
 import { useCallback, useEffect, useRef } from "react";

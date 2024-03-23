@@ -1,3 +1,5 @@
+"use client";
+
 import Image from 'next/image';
 import { useEffect, useState } from "react";
 import { QueuedMessage } from "@/stores/alertQueueStore";
@@ -37,9 +39,18 @@ export default function GenericAlert({ data, alert } : GenericAlertProps) {
           if (!data.alertID || !data.receiptToken)
             return;
           
-          const alertID = data.alertID;
-          const receiptToken = data.receiptToken;
-          setTimeout(() => submitToBuzzer(alertID, receiptToken), 5000); // Let the buzzer microservice know we received the message
+          const confirm = async (alertID: string, receiptToken: string, attempts: number) => {
+            if (attempts > 5)
+              return;
+            
+            const result = await submitToBuzzer(alertID, receiptToken);
+            if(result)
+              return;
+            
+            await confirm(alertID, receiptToken, attempts + 1);
+          }
+
+          confirm(data.alertID, data.receiptToken, 0);
         }
       }
       else

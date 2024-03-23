@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useAlertQueueStore } from "@/stores/alertQueueStore";
 import { jwtDecode } from "jwt-decode";
