@@ -21,11 +21,11 @@ const alerts = [
     image: "/images/alert2.gif",
     condition: (valor: number) => valor === 6
   },
-  // { // Maquita
-  //   audio: "/sounds/alert4.mp3",
-  //   image: "/images/alert4.gif",
-  //   condition: (valor: number) => valor === 15
-  // },
+  { // Maquita
+    audio: "/sounds/alert4.mp3",
+    image: "/images/alert4.gif",
+    condition: (valor: number) => valor === 15
+  },
   { // Nivelzinho sendo muito safado do nada
     audio: "/sounds/alert5.mp3",
     image: "/images/alert5.gif",
@@ -41,11 +41,11 @@ const alerts = [
     image: "/images/alert8.gif",
     condition: (valor: number) => valor === 40
   },
-  // { // Bluezão te amo XodaRap
-  //   audio: "/sounds/alert10.mp3",
-  //   image: "/images/alert10.gif",
-  //   condition: (valor: number) => valor === 60
-  // },
+  { // Bluezão te amo XodaRap
+    audio: "/sounds/alert10.mp3",
+    image: "/images/alert10.gif",
+    condition: (valor: number) => valor === 60
+  },
   { // NivelzinAAAAAAAAAAAAAAAAAAAAAA
     audio: "/sounds/alert11.mp3",
     image: "/images/alert11.gif",
