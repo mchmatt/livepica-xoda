@@ -84,6 +84,15 @@ export default function LivePixPubSubWidget({ token } : LivePixPubSubWidgetParam
   }, [readyState]);
 
   return <>
-    {readyState !== ReadyState.OPEN && <span className="flex items-center justify-center w-screen h-screen text-4xl">Iniciando conexão com LivePix...</span>}
+    {
+      readyState !== ReadyState.OPEN && (
+        <>
+          <div className="flex flex-col items-center justify-center w-screen h-screen text-4xl gap-5">
+            <span>Iniciando conexão com LivePix...</span>
+            <span>v0.0.16</span>
+          </div>
+        </>
+      )
+    }
   </>;
 }
