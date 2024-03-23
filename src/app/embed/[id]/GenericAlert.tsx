@@ -34,8 +34,12 @@ export default function GenericAlert({ data, alert } : GenericAlertProps) {
           // Ambos áudio do alerta e da IA acabaram, reseta a tela p/ esperar por novos alertas
           setTimeout(() => setCurrentAlert(null), 1000);
 
-          if (data.alertID && data.receiptToken)
-            submitToBuzzer(data.alertID, data.receiptToken); // Let the buzzer microservice know we received the message
+          if (!data.alertID || !data.receiptToken)
+            return;
+          
+          const alertID = data.alertID;
+          const receiptToken = data.receiptToken;
+          setTimeout(() => submitToBuzzer(alertID, receiptToken), 5000); // Let the buzzer microservice know we received the message
         }
       }
       else
