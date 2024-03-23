@@ -60,13 +60,10 @@ export default function GenericAlert({ data, alert } : GenericAlertProps) {
 
   return (
     <div className="absolute flex flex-col items-center w-screen h-screen" style={{opacity: isImageLoaded ? 1 : 0}}>
-      <Image 
+      <img 
         src={alert.image}
-        width={0}
-        height={0}
         alt=""
         onLoad={() => setImageLoaded(true)}
-        unoptimized
         style={{ flex: 1, width: "auto", height: "0vh", maxHeight: "70vh", objectFit: "contain" }}
       />
       <div className="text-5xl shadow-md mt-8">
