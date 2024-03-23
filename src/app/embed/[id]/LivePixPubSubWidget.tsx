@@ -36,7 +36,9 @@ function getPongMessage(id: string) {
 
 export default function LivePixPubSubWidget({ token } : LivePixPubSubWidgetParams) {
   const push = useAlertQueueStore((state) => state.push);
-  const { sendMessage, lastMessage, readyState } = useWebSocket("wss://pubsub.livepix.gg/ws");
+  const { sendMessage, lastMessage, readyState } = useWebSocket("wss://pubsub.livepix.gg/ws", {
+    shouldReconnect: () => true
+  });
   
   // Parse incoming messages
   useEffect(() => {
