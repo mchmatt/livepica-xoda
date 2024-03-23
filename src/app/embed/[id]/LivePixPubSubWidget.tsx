@@ -89,7 +89,7 @@ export default function LivePixPubSubWidget({ token } : LivePixPubSubWidgetParam
         <>
           <div className="flex flex-col items-center justify-center w-screen h-screen text-4xl gap-5">
             <span>Iniciando conexão com LivePix...</span>
-            <span>v0.0.16</span>
+            <span>v0.0.17</span>
           </div>
         </>
       )
